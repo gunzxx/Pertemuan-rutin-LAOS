@@ -46,7 +46,7 @@
         <div class="card-container">
             <div class="card-body">
                 <div class="card-image">
-                    <img src="./img/produk0.png" alt="">
+                    <img src="./img/produk1.png" alt="">
                 </div>
                 <div class="card-content">
                     <h1>Produk 1</h1>
@@ -63,7 +63,7 @@
         <div class="card-container">
             <div class="card-body">
                 <div class="card-image">
-                    <img src="./img/produk0.png" alt="">
+                    <img src="./img/produk2.jpg" alt="">
                 </div>
                 <div class="card-content">
                     <h1>Produk 1</h1>

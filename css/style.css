@@ -129,6 +129,7 @@ nav .nav-col img{
 
 .card-image{
     width: 100%;
+    height: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
