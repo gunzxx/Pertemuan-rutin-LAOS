@@ -56,7 +56,7 @@
             <div class="card-footer">
                 <a class="btn btn-danger" href="./delete.php">Hapus</a>
                 <a class="btn btn-second" href="./edit.php">Edit</a>
-                <a class="btn btn-main" href="./buy.php">Beli</a>
+                <a class="btn btn-main" href="./detail.php">Detail</a>
             </div>
         </div>
         
