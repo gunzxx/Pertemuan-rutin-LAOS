@@ -18,13 +18,15 @@ if(!$con){
 }
 else{
     $result = mysqli_query($con,'SELECT * FROM produk');
-    while($data = mysqli_fetch_assoc($result)){
-        $datas[] = $data;
-    }
-
     if(!$datas){
         $datas = [];
     }
+    else{
+        while($data = mysqli_fetch_assoc($result)){
+            $datas[] = $data;
+        }
+    }
+
 }
 
 ?>
