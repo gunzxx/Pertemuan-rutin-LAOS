@@ -1,3 +1,34 @@
+<?php
+
+function dd(array|string $data){
+    if (gettype($data) == "array") {
+        die(json_encode($data));
+    }
+    if (gettype($data) == "string") {
+        die($data);
+    }
+}
+
+$con = mysqli_connect('localhost','root','','laos_shop');
+$datas = [];
+
+if(!$con){
+    echo "Gagal menghubungkan ke database";
+    die(mysqli_connect_error());
+}
+else{
+    $result = mysqli_query($con,'SELECT * FROM produk');
+    while($data = mysqli_fetch_assoc($result)){
+        $datas[] = $data;
+    }
+
+    if(!$datas){
+        $datas = [];
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,56 +57,25 @@
     </section>
 
     <section class="products">
-        <div class="card-container">
-            <div class="card-body">
-                <div class="card-image">
-                    <img src="./img/produk0.png" alt="">
+
+        <?php foreach ($datas as $key => $data) : ?>
+            <div class="card-container">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="<?php echo $data['gambar'] ?>" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h1><?php echo $data['nama'] ?></h1>
+                        <p><?php echo $data['deskripsi'] ?></p>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <h1>Produk 1</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro cupiditate minima nam iusto iure nihil, iste vero quis animi nulla hic minus debitis tempore culpa.</p>
-                </div>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-danger" href="./delete.php">Hapus</a>
-                <a class="btn btn-second" href="./edit.php">Edit</a>
-                <a class="btn btn-main" href="./buy.php">Beli</a>
-            </div>
-        </div>
-        
-        <div class="card-container">
-            <div class="card-body">
-                <div class="card-image">
-                    <img src="./img/produk1.png" alt="">
-                </div>
-                <div class="card-content">
-                    <h1>Produk 1</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro cupiditate minus debitis tempore culpa.</p>
+                <div class="card-footer">
+                    <a class="btn btn-danger" href="./delete.php">Hapus</a>
+                    <a class="btn btn-second" href="./edit.php?id=<?php echo $data['id'] ?>">Edit</a>
+                    <a class="btn btn-main" href="./buy.php">Beli</a>
                 </div>
             </div>
-            <div class="card-footer">
-                <a class="btn btn-danger" href="./delete.php">Hapus</a>
-                <a class="btn btn-second" href="./edit.php">Edit</a>
-                <a class="btn btn-main" href="./detail.php">Detail</a>
-            </div>
-        </div>
-        
-        <div class="card-container">
-            <div class="card-body">
-                <div class="card-image">
-                    <img src="./img/produk2.jpg" alt="">
-                </div>
-                <div class="card-content">
-                    <h1>Produk 1</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro cupiditate minima nam iusto iure nihil, iste vero quis animi nulla hic minus debitis tempore culpa.</p>
-                </div>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-danger" href="./delete.php">Hapus</a>
-                <a class="btn btn-second" href="./edit.php">Edit</a>
-                <a class="btn btn-main" href="./buy.php">Beli</a>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </section>
 </body>
 
