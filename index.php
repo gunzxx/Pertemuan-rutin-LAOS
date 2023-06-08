@@ -18,7 +18,7 @@ if(!$con){
 }
 else{
     $result = mysqli_query($con,'SELECT * FROM produk');
-    if(!$datas){
+    if(!$result){
         $datas = [];
     }
     else{
