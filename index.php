@@ -58,7 +58,7 @@ if (!$result) {
             <div class="card-container">
                 <div class="card-body">
                     <div class="card-image">
-                        <img src="<?php echo $data['gambar'] ?>" alt="">
+                        <img src="<?php echo ($data['gambar'] != null | $data['gambar'] != "") ? $data['gambar'] : "./img/default.png" ?>" alt="">
                     </div>
                     <div class="card-content">
                         <h1><?php echo $data['nama'] ?></h1>
