@@ -27,15 +27,7 @@ if (isset($_POST['add-product'])) {
             echo "<script>alert('Ekstensi gambar yang boleh hanya jpg, png dan jpeg');window.location='create.php';</script>";
         }
     } else {
-        $query = "INSERT INTO produk (nama, deskripsi, gambar) VALUES ('$nama', '$deskripsi', null)";
-        $result = mysqli_query($con, $query);
-
-        if (!$result) {
-            die("Query gagal dijalankan: " . mysqli_errno($con) .
-                " - " . mysqli_error($con));
-        } else {
-            echo "<script>alert('Data berhasil ditambah.');window.location='index.php';</script>";
-        }
+        echo "<script>alert('Gambar harus di isi.');window.location='create.php';</script>";
     }
 }
 ?>
@@ -68,15 +60,15 @@ if (isset($_POST['add-product'])) {
         <form method="POST" enctype="multipart/form-data">
             <div>
                 <label>Nama Produk</label>
-                <input type="text" name="nama" />
+                <input type="text" name="nama" required />
             </div>
             <div>
                 <label>Deskripsi</label>
-                <input type="text" name="deskripsi" />
+                <input type="text" name="deskripsi" required />
             </div>
             <div>
                 <label>Gambar Produk</label>
-                <input type="file" name="gambar" />
+                <input type="file" name="gambar" required />
             </div>
             <div>
                 <button type="submit" name="add-product">Simpan Produk</button>
