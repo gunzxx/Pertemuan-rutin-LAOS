@@ -32,7 +32,7 @@ if (isset($_POST['update-product'])) {
                 die("Query gagal dijalankan: " . mysqli_errno($con) .
                     " - " . mysqli_error($con));
             } else {
-                echo "<script>alert('Data berhasil ditambah.');window.location='index.php';</script>";
+                echo "<script>alert('Data berhasil diperbarui.');window.location='index.php';</script>";
             }
         } else {
             echo "<script>alert('Ekstensi gambar yang boleh hanya jpg, png dan jpeg');window.location='edit.php';</script>";
@@ -44,7 +44,7 @@ if (isset($_POST['update-product'])) {
             die("Query gagal dijalankan: " . mysqli_errno($con) .
                 " - " . mysqli_error($con));
         } else {
-            echo "<script>alert('Data berhasil ditambah.');window.location='index.php';</script>";
+            echo "<script>alert('Data berhasil diperbarui.');window.location='index.php';</script>";
         }
     } else {
         echo "<script>alert('Data harus di isi semua.');window.location='edit.php';</script>";
