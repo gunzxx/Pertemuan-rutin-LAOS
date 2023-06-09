@@ -1,6 +1,9 @@
 <?php
 
-function dd(array|string $data){
+include('koneksi.php');
+
+function dd(array|string $data)
+{
     if (gettype($data) == "array") {
         die(json_encode($data));
     }
@@ -9,25 +12,16 @@ function dd(array|string $data){
     }
 }
 
-$con = mysqli_connect('localhost','root','','laos_shop');
 $datas = [];
-
-if(!$con){
-    echo "Gagal menghubungkan ke database";
-    die(mysqli_connect_error());
-}
-else{
-    $result = mysqli_query($con,'SELECT * FROM produk');
-    if(!$result){
-        $datas = [];
+$result = mysqli_query($con, 'SELECT * FROM produk');
+if (!$result) {
+    $datas = [];
+} else {
+    while ($data = mysqli_fetch_assoc($result)) {
+        $datas[] = $data;
     }
-    else{
-        while($data = mysqli_fetch_assoc($result)){
-            $datas[] = $data;
-        }
-    }
-
 }
+
 
 ?>
 
