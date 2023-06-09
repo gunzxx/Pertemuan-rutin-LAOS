@@ -5,7 +5,7 @@ if (isset($_POST['add-product'])) {
     $nama = $_POST['nama'];
     $deskripsi = $_POST['deskripsi'];
     $gambar = $_FILES['gambar']['name'];
-    if ($gambar != "") {
+    if ($nama != "" && $deskripsi != "" && $gambar != "") {
         $ekstensi_diperbolehkan = array('png', 'jpg', 'jpeg');
         $x = explode('.', $gambar);
         $ekstensi = strtolower(end($x));
@@ -27,7 +27,7 @@ if (isset($_POST['add-product'])) {
             echo "<script>alert('Ekstensi gambar yang boleh hanya jpg, png dan jpeg');window.location='create.php';</script>";
         }
     } else {
-        echo "<script>alert('Gambar harus di isi.');window.location='create.php';</script>";
+        echo "<script>alert('Data harus di isi semua.');window.location='create.php';</script>";
     }
 }
 ?>

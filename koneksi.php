@@ -2,9 +2,9 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$nama_db = "laos_shop"; //nama database
-$con = mysqli_connect($host, $user, $pass, $nama_db); //pastikan urutan nya seperti ini, jangan tertukar
+$nama_db = "laos_shop"; 
+$con = mysqli_connect($host, $user, $pass, $nama_db);
 
-if (!$con) { //jika tidak terkoneksi maka akan tampil error
+if (!$con) {
     die("Koneksi dengan database gagal: ". mysqli_connect_error());
 }
