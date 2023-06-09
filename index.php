@@ -1,27 +1,22 @@
 <?php
 
-include('koneksi.php');
+require_once('koneksi.php');
 
-function dd(array|string $data)
+function dd($data)
 {
-    if (gettype($data) == "array") {
-        die(json_encode($data));
-    }
     if (gettype($data) == "string") {
         die($data);
     }
+    die(json_encode($data));
 }
 
 $datas = [];
 $result = mysqli_query($con, 'SELECT * FROM produk');
-if (!$result) {
-    $datas = [];
-} else {
+if ($result) {
     while ($data = mysqli_fetch_assoc($result)) {
         $datas[] = $data;
     }
 }
-
 
 ?>
 
@@ -66,7 +61,7 @@ if (!$result) {
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-danger" href="./delete.php">Hapus</a>
+                    <a class="btn btn-danger" href="./delete.php?id=<?php echo $data['id'] ?>">Hapus</a>
                     <a class="btn btn-second" href="./edit.php?id=<?php echo $data['id'] ?>">Edit</a>
                     <a class="btn btn-main" href="./buy.php">Beli</a>
                 </div>

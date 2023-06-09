@@ -87,7 +87,7 @@ if (isset($_POST['update-product'])) {
                 </div>
                 <div>
                     <label>Gambar Produk</label>
-                    <input type="file" name="gambar" />
+                    <input accept="image/*" type="file" name="gambar" />
                 </div>
                 <div>
                     <button type="submit" name="update-product">Update Produk</button>
