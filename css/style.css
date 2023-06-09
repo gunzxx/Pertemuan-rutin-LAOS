@@ -100,14 +100,18 @@ nav .nav-col img{
 }
 
 
-.products{
+.products {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.products:has(.card-container:nth-child(3)) {
+    justify-content: space-between;
 }
 
 .card-container{
