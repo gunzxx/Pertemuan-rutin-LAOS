@@ -1,32 +1,21 @@
 <?php
 
-function dd(array|string $data){
-    if (gettype($data) == "array") {
-        die(json_encode($data));
-    }
+require_once('koneksi.php');
+
+function dd($data)
+{
     if (gettype($data) == "string") {
         die($data);
     }
+    die(json_encode($data));
 }
 
-$con = mysqli_connect('localhost','root','','laos_shop');
 $datas = [];
-
-if(!$con){
-    echo "Gagal menghubungkan ke database";
-    die(mysqli_connect_error());
-}
-else{
-    $result = mysqli_query($con,'SELECT * FROM produk');
-    if(!$result){
-        $datas = [];
+$result = mysqli_query($con, 'SELECT * FROM produk');
+if ($result) {
+    while ($data = mysqli_fetch_assoc($result)) {
+        $datas[] = $data;
     }
-    else{
-        while($data = mysqli_fetch_assoc($result)){
-            $datas[] = $data;
-        }
-    }
-
 }
 
 ?>
@@ -64,7 +53,7 @@ else{
             <div class="card-container">
                 <div class="card-body">
                     <div class="card-image">
-                        <img src="<?php echo $data['gambar'] ?>" alt="">
+                        <img src="<?php echo ($data['gambar'] != null | $data['gambar'] != "") ? $data['gambar'] : "./img/default.png" ?>" alt="">
                     </div>
                     <div class="card-content">
                         <h1><?php echo $data['nama'] ?></h1>
@@ -72,7 +61,7 @@ else{
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-danger" href="./delete.php">Hapus</a>
+                    <a class="btn btn-danger" href="./delete.php?id=<?php echo $data['id'] ?>">Hapus</a>
                     <a class="btn btn-second" href="./edit.php?id=<?php echo $data['id'] ?>">Edit</a>
                     <a class="btn btn-main" href="./buy.php">Beli</a>
                 </div>
