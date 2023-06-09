@@ -123,7 +123,7 @@ nav .nav-col img {
     justify-content: space-between;
 }
 
-.card-container {
+.card-container{
     width: 30%;
     box-shadow: 0 0 15px rgba(0, 0, 0, .1);
     padding: 15px;
